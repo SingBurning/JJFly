@@ -2,5 +2,6 @@
 
 window.D = {
     common: null,
+    //存储状态
     commonState: {}
 }
