@@ -44,13 +44,18 @@ cc.Class({
         let pos = this.getNewBulletPosition(newNode);
         newNode.setPosition(pos);
         newNode.getComponent('Bullet').enemyGroup = this;
-        newNode.getComponent('Bullet').initSpeed();
+        newNode.getComponent('Bullet').initSpeed(pos.y);
     },
 
     //随机生成位置
     getNewBulletPosition: function (bulletNode) {
         let randX = cc.randomMinus1To1() * this.node.parent.width;
         let randY = this.node.parent.height / 2 + 20;
+        //随机从上下发射子弹
+        let randArr = new Array(-1,1);
+        let index = Math.floor(Math.random() *2);
+        randY = randY * randArr[index];
+
         return cc.v2(randX, randY);
     },
 
