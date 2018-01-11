@@ -15,18 +15,60 @@ cc.Class({
         enemyGroup: {
             default: null,
             type: require('./EnemyGroup')
-        }
+        },
+
+        touchLayer: {
+            default: null,
+            type: require('./TouchLayer')
+        },
+
+        score: {
+            default: null,
+            type: cc.Label
+        },
+
+        bgMusic: cc.AudioSource,
+
     },
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
+        D.commonState.hit = false;    //是否击中了飞机
+        D.commonState.score = 0;    //初始化得分
+        D.commonState.pause = false;    //暂停状态
         this.enemyGroup.startAction();
+
+        this.schedule(this.updateScore,1)
+
+        if (cc.director.isPaused()) {
+            cc.director.resume();
+        }
+
+        this.bgMusic.play();
     },
 
-    start () {
-
+    updateScore: function () {
+        D.commonState.score += 1;
+        this.score.string = D.commonState.score.toString();
+        if (D.commonState.hit) {
+            this.unschedule(this.updateScore);
+        }
     },
+
+    pauseButtonOnClick: function () {
+        if (D.commonState.pause) {
+            cc.director.resume();
+            this.touchLayer.offDrag();
+            this.bgMusic.resume();
+        }else{
+            cc.director.pause();
+            this.touchLayer.onDrag();
+            this.bgMusic.pause();
+        }
+
+        D.commonState.pause = !D.commonState.pause;
+    }
 
     // update (dt) {},
 });

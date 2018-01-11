@@ -17,7 +17,14 @@ cc.Class({
         enemyGroup: {
             default: [],
             type: enemyG
-        }
+        },
+
+        hero: {
+            default: null,
+            type: cc.Node
+        },
+
+        bulletSound: cc.AudioClip,
     },
 
 
@@ -33,6 +40,7 @@ cc.Class({
             let freq = this.enemyGroup[i].freq;
             this[groupName] = function (k) {
                 this.genNewBullet(this.enemyGroup[k]);
+                cc.audioEngine.play(this.bulletSound)
             }.bind(this, i);
             this.schedule(this[groupName], freq);
         }
@@ -44,7 +52,8 @@ cc.Class({
         let pos = this.getNewBulletPosition(newNode);
         newNode.setPosition(pos);
         newNode.getComponent('Bullet').enemyGroup = this;
-        newNode.getComponent('Bullet').initSpeed(pos.y);
+        let heroPos = this.hero.getPosition();
+        newNode.getComponent('Bullet').initSpeed(heroPos, pos);
     },
 
     //随机生成位置

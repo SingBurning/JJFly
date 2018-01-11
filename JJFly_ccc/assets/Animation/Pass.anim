@@ -1,0 +1,43 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "Pass",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 0.7666666666666667,
+  "sample": 60,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "comps": {
+      "cc.Sprite": {
+        "spriteFrame": [
+          {
+            "frame": 0,
+            "value": {
+              "__uuid__": "5e216d03-d03c-4af8-8df7-11e0a5f820b5"
+            }
+          },
+          {
+            "frame": 0.25,
+            "value": {
+              "__uuid__": "e4ca174c-1d10-4bed-b351-13330bff6b8d"
+            }
+          },
+          {
+            "frame": 0.5,
+            "value": {
+              "__uuid__": "77080298-25ee-428e-bb84-9a3932ef4994"
+            }
+          },
+          {
+            "frame": 0.75,
+            "value": {
+              "__uuid__": "2c4a1ff1-a67b-4d00-85fb-cfd968c1ddbd"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "events": []
+}

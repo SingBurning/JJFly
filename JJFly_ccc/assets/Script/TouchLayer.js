@@ -64,6 +64,9 @@ cc.Class({
             heroY = maxY;
         }
 
+        // let ang = cc.pToAngle(cc.v2(posX, posY)) / Math.PI * 180;
+        // this.hero.rotation = 90-ang
+
         this.hero.x = heroX;
         this.hero.y = heroY; 
 

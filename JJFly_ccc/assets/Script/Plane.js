@@ -12,30 +12,40 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        // foo: {
-        //     // ATTRIBUTES:
-        //     default: null,        // The default value will be used only when the component attaching
-        //                           // to a node for the first time
-        //     type: cc.SpriteFrame, // optional, default is typeof default
-        //     serializable: true,   // optional, default is true
-        // },
-        // bar: {
-        //     get () {
-        //         return this._bar;
-        //     },
-        //     set (value) {
-        //         this._bar = value;
-        //     }
-        // },
+        hitAct: {
+            default: null,
+            type: cc.Node
+        },
+        touchLayer: {
+            default: null,
+            type: require('./TouchLayer')
+        },
+        hero: {
+            default: null,
+            type: cc.Node
+        },
+
+        hitSound: cc.AudioClip,
     },
 
-    // LIFE-CYCLE CALLBACKS:
+    onLoad () {
+        let manager = cc.director.getCollisionManager();
+        manager.enabled = true;
+        this.hitAct.active = false;
+    }, 
 
-    // onLoad () {},
-
-    start () {
-
-    },
-
+    onCollisionEnter: function (other,self) {
+        cc.audioEngine.play(this.hitSound);
+        this.touchLayer.offDrag();
+        D.commonState.hit = true;
+        this.hitAct.setPosition(this.node.getPosition());
+        this.hitAct.active = true;
+        let anim = this.hitAct.getComponent(cc.Animation);
+        anim.play('Hit');
+        anim.on("finished",function () {
+            this.hero.destroy();
+            cc.director.loadScene('End');
+        },this);
+    }
     // update (dt) {},
 });
