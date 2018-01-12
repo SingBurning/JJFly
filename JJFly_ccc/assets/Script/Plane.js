@@ -35,17 +35,19 @@ cc.Class({
     }, 
 
     onCollisionEnter: function (other,self) {
-        cc.audioEngine.play(this.hitSound);
-        this.touchLayer.offDrag();
-        D.commonState.hit = true;
-        this.hitAct.setPosition(this.node.getPosition());
-        this.hitAct.active = true;
-        let anim = this.hitAct.getComponent(cc.Animation);
-        anim.play('Hit');
-        anim.on("finished",function () {
-            this.hero.destroy();
-            cc.director.loadScene('End');
-        },this);
+        if (!D.commonState.hit) {
+            cc.audioEngine.play(this.hitSound);
+            this.touchLayer.offDrag();
+            D.commonState.hit = true;
+            this.hitAct.setPosition(this.node.getPosition());
+            this.hitAct.active = true;
+            let anim = this.hitAct.getComponent(cc.Animation);
+            anim.play('Hit');
+            anim.on("finished",function () {
+                this.hero.destroy();
+                cc.director.loadScene('End');
+            },this);
+        }
     }
     // update (dt) {},
 });

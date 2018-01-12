@@ -40,7 +40,7 @@ cc.Class({
             let freq = this.enemyGroup[i].freq;
             this[groupName] = function (k) {
                 this.genNewBullet(this.enemyGroup[k]);
-                cc.audioEngine.play(this.bulletSound)
+                // cc.audioEngine.play(this.bulletSound)
             }.bind(this, i);
             this.schedule(this[groupName], freq);
         }

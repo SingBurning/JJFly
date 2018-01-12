@@ -72,6 +72,17 @@ cc.Class({
 
         this.startX = location.x;
         this.startY = location.y;
+
+        //向右移动大于10像素，背景想左移动0.2
+        if (posX > 10) {
+            if (this.node.x < 20 ) {
+                this.node.x -= 0.5
+            }
+        }else if(posX < -10){
+            if(this.node.x > -20){
+                this.node.x += 0.5
+            }
+        }
     }
 
     // start () {

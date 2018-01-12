@@ -118,10 +118,9 @@
       "__id__": 1
     },
     "_enabled": true,
-    "speedYBase": 15,
-    "speedXBase": 25,
-    "bulletType": "bullet",
-    "action": false
+    "speedYBase": 10,
+    "speedXBase": 15,
+    "bulletType": "bullet"
   },
   {
     "__type__": "cc.PrefabInfo",

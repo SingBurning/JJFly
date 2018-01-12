@@ -8,7 +8,7 @@
   "inlineSpriteFrames": true,
   "inlineSpriteFrames_native": true,
   "jailbreakPlatform": false,
-  "md5Cache": false,
+  "md5Cache": true,
   "mergeStartScene": false,
   "oauthLoginServer": "",
   "optimizeHotUpdate": false,
@@ -22,10 +22,10 @@
   "privateKey": "",
   "renderMode": "0",
   "startScene": "9ce10723-d65f-4218-a69b-03d3a2d02b7a",
-  "title": "hello_world",
-  "webOrientation": "auto",
+  "title": "JJ-Fly",
+  "webOrientation": "portrait",
   "wechatgame": {
-    "appid": "",
+    "appid": "wx6ac3f5090a6b99c5",
     "orientation": "portrait"
   },
   "xxteaKey": "ab84808d-3ac9-46"
